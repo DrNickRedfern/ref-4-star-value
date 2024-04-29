@@ -149,3 +149,6 @@ data/
 
 # Environment requirements.txt
 ref-4-star-value-requirements.txt
+
+# Jupyter notebook
+development.ipynb
