@@ -56,6 +56,11 @@ To calculate the annual value of a 4 star output or impact case study, upload a 
 - Required number of items to be returned for sub-profile
 
 *Please note*: the columns in the csv file must have **exactly** the same names as listed above.
+
+**UnicodeDecodeError**
+Streamlit's file uploader expects CSV files with UTF-8 encoding. 
+If you get a `UnicodeDecodeError`, please resave your csv as with UTF-8 encoding and re-upload. 
+In Microsoft Excel, you can find this in this filetype in the drop down menu of file types on the *Save as* page: select `CSV UTF-8 (Comma delimited) (*.csv)` as the file type.
  
 ''')
 
@@ -65,7 +70,7 @@ uploaded_file = st.sidebar.file_uploader('CSV files only', type=['csv'], accept_
 if uploaded_file is not None:
     @st.cache_data
     def load_data(file):
-       df = pd.read_csv(file, encoding='cp1252')
+       df = pd.read_csv(file, encoding='utf-8')
        return df
     
     df = load_data(uploaded_file)
