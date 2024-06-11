@@ -65,7 +65,7 @@ uploaded_file = st.sidebar.file_uploader('CSV files only', type=['csv'], accept_
 if uploaded_file is not None:
     @st.cache_data
     def load_data(file):
-       df = pd.read_csv(file, encoding='utf-8')
+       df = pd.read_csv(file, encoding='cp1252')
        return df
     
     df = load_data(uploaded_file)
